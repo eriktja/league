@@ -23,9 +23,9 @@
 	<meta name="League" content="Nøøørds only. No girls allowed" />
 </svelte:head>
 
-<Navbar class="bg-indigo-200">
+<Navbar color="indigo">
 	<NavBrand href="/">
-		<img src="/heart-beer.svg" class="mr-3 h-6 sm:h-9" alt="Flowbite Logo" />
+		<img src="/joystick.svg" class="mr-3 h-6 sm:h-9" alt="joystick logo" />
 		<span class="self-center whitespace-nowrap text-xl font-semibold dark:text-white">League</span>
 	</NavBrand>
 	<NavHamburger on:click={toggle} />
@@ -40,7 +40,7 @@
 			items={menu}
 			let:item
 			ulClass="flex gap-y-4 md:gap-x-5 auto-col-max auto-row-max"
-			class="bg-indigo-100 border-2 border-black-100"
+			color="indigo"
 		>
 			<a
 				href={item.href}
