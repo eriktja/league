@@ -1,9 +1,9 @@
 <script>
 	import SideBar from '$lib/components/side-bar.svelte';
 	import { Button, Navbar, NavBrand, NavHamburger, NavUl, NavLi, MegaMenu } from 'flowbite-svelte';
-    import { IconOutline, ChevronDownOutline } from 'flowbite-svelte-icons';
-	
-    let menu = [
+	import { IconOutline, ChevronDownOutline } from 'flowbite-svelte-icons';
+
+	let menu = [
 		{ name: 'Home', href: '/' },
 		{ name: 'Leaderboard', href: '/' },
 		{ name: 'Profile', href: '/' },
@@ -34,13 +34,21 @@
 		<NavLi href="/">Home</NavLi>
 		<NavLi class="cursor-pointer">
 			Stuff<ChevronDownOutline class="w-3 h-3 ml-2 text-primary-800 dark:text-white inline" />
-            
 		</NavLi>
-        <MegaMenu full items={menu} let:item ulClass="flex gap-y-4 md:gap-x-5 auto-col-max auto-row-max" class="bg-indigo-100 border-2 border-black-100">
-            <a href={item.href} class="hover:underline hover:text-primary-600 dark:hover:text-primary-500">
-              {item.name}
-            </a>            
-          </MegaMenu>
+		<MegaMenu
+			full
+			items={menu}
+			let:item
+			ulClass="flex gap-y-4 md:gap-x-5 auto-col-max auto-row-max"
+			class="bg-indigo-100 border-2 border-black-100"
+		>
+			<a
+				href={item.href}
+				class="hover:underline hover:text-primary-600 dark:hover:text-primary-500"
+			>
+				{item.name}
+			</a>
+		</MegaMenu>
 	</NavUl>
 </Navbar>
 
