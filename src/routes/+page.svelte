@@ -1,5 +1,4 @@
 <script>
-	import SideBar from '$lib/components/side-bar.svelte';
 	import { Button, Navbar, NavBrand, NavHamburger, NavUl, NavLi, MegaMenu } from 'flowbite-svelte';
 	import { IconOutline, ChevronDownOutline } from 'flowbite-svelte-icons';
 
@@ -11,6 +10,7 @@
 		{ name: 'Settings', href: '/' }
 	];
 
+
 	const toggle = () => {
 		hidden = !hidden;
 	};
@@ -21,7 +21,10 @@
 <svelte:head>
 	<title>League</title>
 	<meta name="League" content="Nøøørds only. No girls allowed" />
+
+	
 </svelte:head>
+
 
 <Navbar color="indigo">
 	<NavBrand href="/">

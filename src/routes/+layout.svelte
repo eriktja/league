@@ -1,5 +1,9 @@
 <script>
+	import { DarkMode, NavBrand, Navbar } from 'flowbite-svelte';
 	import '../app.css';
 </script>
 
-<slot />
+
+<main>
+	<slot />
+</main>
