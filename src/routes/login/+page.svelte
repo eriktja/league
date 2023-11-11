@@ -1,22 +1,7 @@
 <script>
 	import { onMount } from 'svelte';
-	import {
-		ButtonGroup,
-		InputAddon,
-		Label,
-		Input,
-		Button,
-		Helper,
-		NavBrand,
-		Spinner,
-
-		Navbar,
-
-		DarkMode
-
-
-	} from 'flowbite-svelte';
-	import { UserCircleSolid, QuestionCircleSolid } from 'flowbite-svelte-icons';
+	import { signInWithGoogle, logOut } from '$lib/auth/google';
+	import { user } from '$lib/firebase';
 
 	let ready = false;
 
@@ -26,58 +11,59 @@
 		}, 0)
 	);
 
-
 	let hidden = true;
 </script>
 
-<Navbar color="indigo">
-	<NavBrand>
-		<img src="/joystick.svg" class="mr-3 h-6 sm:h-9" alt="joystick logo" />
-		<span class="self-center whitespace-nowrap text-xl font-semibold dark:text-white">Welcome</span>
-	</NavBrand>
-	<DarkMode />
-</Navbar>
-<div class="login-frame">
+<div class="flex items-center justify-center h-screen">
 	{#if !ready}
-		<Spinner />
+		<div class="">
+			<span class="loading loading-infinity loading-lg" />
+		</div>
 	{/if}
 	{#if ready}
-	
-		<img src="/gaming-tournament.svg" class="" alt="Gaming-tournament logo" />
-		<form>
-			<div>
-				<Label for="username" class="bloack mb-2">Username</Label>
-				<ButtonGroup>
-					<InputAddon>
-						<UserCircleSolid class="w-4 h-4 text-gray-500 dark:text-gray-400" />
-					</InputAddon>
-					<Input type="text" id="username" placeholder="Username" />
-				</ButtonGroup>
+		<div class="card w-96 bg-base-100 shadow-xl">
+			<figure><img src="/gaming-tournament.svg" class="" alt="Gaming-tournament logo" /></figure>
+			<div class="card-body flex align-center">
+				{#if $user}
+					<h2 class="card-title">Welcome {$user.displayName}!</h2>
+					<button class="btn btn-warning" on:click={logOut}>Log out</button>
+				{:else}
+					<h2 class="card-title">Welcome!</h2>
+					<form class="flex flex-col justify-center">
+						<div class="form-control w-full max-w-xs">
+							<label for="email-input" class="label">
+								<span class="label-text">Email</span>
+							</label>
+							<input
+								id="email-input"
+								type="text"
+								placeholder="oboygutten@dnb.no"
+								class="input input-bordered w-full max-w-xs"
+							/>
+						</div>
+						<div class="form-control w-full max-w-xs">
+							<label for="password-input" class="label">
+								<span class="label-text">Password</span>
+							</label>
+							<input
+								id="password-input"
+								type="password"
+								placeholder="Nerd123"
+								class="input input-bordered w-full max-w-xs"
+							/>
+						</div>
+						<div class="join join-vertical mt-2">
+							<button class="btn btn-secondary join-item">Log in</button>
+							<button class="btn btn-primary join-item" on:click={signInWithGoogle}
+								>Sign in with Google</button
+							>
+							<a class="btn btn-accent btn-sm btn-outline join-item" href="/create-profile"
+								>New account</a
+							>
+						</div>
+					</form>
+				{/if}
 			</div>
-
-			<div class="mt-4">
-				<Label for="password" class="bloack mb-2">Password</Label>
-				<ButtonGroup>
-					<InputAddon>
-						<QuestionCircleSolid class="w-4 h-4 text-gray-500 dark:text-gray-400" />
-					</InputAddon>
-					<Input type="password" id="password" placeholder="Password" />
-				</ButtonGroup>
-				<Helper {hidden} class="mt-2" color="red">lol</Helper>
-			</div>
-		</form>
-		<ButtonGroup class="mt-4">
-			<Button>Sign in</Button>
-			<Button>New account</Button>
-		</ButtonGroup>
+		</div>
 	{/if}
 </div>
-
-<style>
-	.login-frame {
-		position: absolute;
-		top: 40%;
-		left: 50%;
-		transform: translate(-50%, -50%);
-	}
-</style>

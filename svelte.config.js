@@ -14,8 +14,6 @@ const config = {
 		adapter: adapter()
 	},
 
-	preprocess: vitePreprocess(),
-
 	compilerOptions: {
 		customElement: true
 	}
