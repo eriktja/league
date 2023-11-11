@@ -1,24 +1,28 @@
-<script>
+<script lang="ts">
 	import AuthCheck from '$lib/components/AuthCheck.svelte';
+	import { user } from '$lib/firebase';
+	import { redirect } from '@sveltejs/kit';
+	import { onMount } from 'svelte';
 
-	let menu = [
-		{ name: 'Home', href: '/' },
-		{ name: 'Leaderboard', href: '/' },
-		{ name: 'Profile', href: '/' },
-		{ name: 'Instructions', href: '/' },
-		{ name: 'Settings', href: '/' }
-	];
+
 
 	const toggle = () => {
 		hidden = !hidden;
 	};
 	let hidden = true;
+
+	onMount(() => {
+		if (!$user) {
+			const a = document.createElement('a');
+			a.href = '/login';
+			a.click();
+		}
+	});
 </script>
 
 <!-- HTML -->
-<svelte:head>
-	<title>League</title>
-	<meta name="League" content="Nøøørds only. No girls allowed" />
-</svelte:head>
 
 <AuthCheck />
+
+<div class="card">
+</div>

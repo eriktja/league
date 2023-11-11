@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 	import { user } from '$lib/firebase';
 	import { confirmPasswordReset } from 'firebase/auth';
 	import { onMount } from 'svelte';
@@ -27,21 +27,33 @@
 		}, 0)
 	);
 
-	let errors = {};
+	let errors: FormError = {
+		email: '',
+		password: '',
+		confirmPassword: ''
+	};
+
+	type FormError = {
+		email: string;
+		password: string;
+		confirmPassword: string;
+	};
 
 	const clearErrorMessages = () => {
-		errors = {};
+		errors = {
+			email: '',
+			password: '',
+			confirmPassword: ''
+		};
 	};
 
 	const handleSubmit = async () => {
 		try {
 			await schema.validate(values, { abortEarly: false });
 			// alert(JSON.stringify(values, null, 2));
-			errors = {};
-
-
-		} catch (err) {
-			errors = err.inner.reduce((acc, err) => {
+			clearErrorMessages();
+		} catch (err: any) {
+			errors = err.inner.reduce((acc: any, err: any) => {
 				return { ...acc, [err.path]: err.message };
 			}, {});
 		}

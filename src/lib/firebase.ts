@@ -39,7 +39,7 @@ function userStore() {
 			set(user);
 		});
 
-		return () => unsubscribe();
+		// return () => unsubscribe();
 	});
 
 	return { subscribe };

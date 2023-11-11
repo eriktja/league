@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 	import { onMount } from 'svelte';
 	import { signInWithGoogle, logOut } from '$lib/auth/google';
 	import { user } from '$lib/firebase';
@@ -26,6 +26,7 @@
 			<div class="card-body flex align-center">
 				{#if $user}
 					<h2 class="card-title">Welcome {$user.displayName}!</h2>
+					<a class="btn btn-accent btn-lg" href="/">ENTER</a>
 					<button class="btn btn-warning" on:click={logOut}>Log out</button>
 				{:else}
 					<h2 class="card-title">Welcome!</h2>
