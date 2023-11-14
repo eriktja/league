@@ -79,19 +79,6 @@
 						class="flex flex-col justify-center"
 						on:submit|preventDefault={handleSubmit}
 					>
-						<div class="form-control w-full max-w-xs">
-							<label for="name-input" class="label">
-								<span class="label-text">Name</span>
-							</label>
-							<input
-								id="name-input"
-								name="name"
-								type="text"
-								placeholder="Hva heter du?"
-								class="input input-bordered w-full max-w-xs"
-								on:input={clearErrorMessages}
-							/>
-						</div>
 						<div>
 							<label for="email-input" class="label">
 								<span class="label-text">Email</span>

@@ -11,4 +11,7 @@ export async function signInWithGoogle() {
 export function logOut() {
 	console.log('Log out');
 	signOut(auth);
+	const a = document.createElement('a');
+	a.href = '/login';
+	a.click();
 }

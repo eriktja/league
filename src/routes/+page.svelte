@@ -22,7 +22,15 @@
 
 <!-- HTML -->
 
-<AuthCheck />
+<AuthCheck >
 
-<div class="card">
-</div>
+	<div class="flex items-center justify-center h-screen">
+
+		<div class="">
+			<div class="font-bold">
+				<h2>GET STARTED</h2>
+			</div>
+		</div>
+	</div>
+</AuthCheck>
+
